@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Goal Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html" class="active"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Step 3</div>
+        <h1>Goal <span class="text-green">Tracker</span></h1>
+        <p>Set your financial goals and track your progress towards them</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- Add Goal Form -->
+    <div class="card" style="margin-bottom:2rem;">
+      <h3 class="card-title">
+        <i class="fas fa-plus-circle"></i> Add New Goal
+      </h3>
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label><i class="fas fa-flag"></i> Goal Name</label>
+          <input type="text" id="goalName" placeholder="e.g. Emergency Fund"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-bullseye"></i> Target Amount</label>
+          <input type="number" id="goalTarget" placeholder="e.g. 100000" min="0"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-wallet"></i> Current Saved</label>
+          <input type="number" id="goalCurrent" placeholder="e.g. 25000" min="0"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-calendar"></i> Target Date</label>
+          <input type="date" id="goalDate"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-tag"></i> Category</label>
+          <select id="goalCategory">
+            <option value="emergency">🛡️ Emergency Fund</option>
+            <option value="savings">💰 General Savings</option>
+            <option value="investment">📈 Investment</option>
+            <option value="home">🏠 Home / Property</option>
+            <option value="education">🎓 Education</option>
+            <option value="travel">✈️ Travel</option>
+            <option value="vehicle">🚗 Vehicle</option>
+            <option value="other">🎯 Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-sticky-note"></i> Notes (optional)</label>
+          <input type="text" id="goalNotes" placeholder="Any notes about this goal..."/>
+        </div>
+
+      </div>
+      <div class="form-actions">
+        <button class="btn-primary" id="addGoalBtn">
+          <i class="fas fa-plus"></i>
+          Add Goal
+        </button>
+      </div>
+    </div>
+
+    <!-- Goals Summary -->
+    <div class="goals-summary" id="goalsSummary" style="display:none;">
+      <div class="goals-summary-card">
+        <div class="overview-card-icon green"><i class="fas fa-flag"></i></div>
+        <div>
+          <div class="overview-card-label">Total Goals</div>
+          <div class="overview-card-value" id="totalGoalsCount">0</div>
+        </div>
+      </div>
+      <div class="goals-summary-card">
+        <div class="overview-card-icon blue"><i class="fas fa-check-circle"></i></div>
+        <div>
+          <div class="overview-card-label">On Track</div>
+          <div class="overview-card-value" id="onTrackCount">0</div>
+        </div>
+      </div>
+      <div class="goals-summary-card">
+        <div class="overview-card-icon teal"><i class="fas fa-piggy-bank"></i></div>
+        <div>
+          <div class="overview-card-label">Total Saved</div>
+          <div class="overview-card-value" id="totalSavedVal">--</div>
+        </div>
+      </div>
+      <div class="goals-summary-card">
+        <div class="overview-card-icon purple"><i class="fas fa-bullseye"></i></div>
+        <div>
+          <div class="overview-card-label">Total Target</div>
+          <div class="overview-card-value" id="totalTargetVal">--</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals List -->
+    <div id="goalsList">
+      <div class="empty-state" id="goalsEmpty">
+        <i class="fas fa-flag"></i>
+        <h3>No Goals Yet</h3>
+        <p>Add your first financial goal above to start tracking your progress!</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

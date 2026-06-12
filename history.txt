@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Score History</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html" class="active"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Track Progress</div>
+        <h1>Score <span class="text-green">History</span></h1>
+        <p>See how your financial health score has changed over time</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- Empty State -->
+    <div class="card empty-state" id="historyEmpty">
+      <i class="fas fa-chart-line"></i>
+      <h3>No History Yet</h3>
+      <p>Your score history builds up every time you calculate your stability score in the Analyser. Go calculate your score to get started!</p>
+      <a href="analyzer.html" class="btn-primary">
+        <i class="fas fa-calculator"></i> Go to Analyser
+      </a>
+    </div>
+
+    <!-- History Content -->
+    <div id="historyContent" style="display:none;">
+
+      <!-- Stats Row -->
+      <div class="history-stats-row" id="historyStatsRow">
+        <div class="debt-summary-card">
+          <div class="overview-card-icon blue">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div>
+            <div class="overview-card-label">Latest Score</div>
+            <div class="overview-card-value" id="latestScore">--</div>
+          </div>
+        </div>
+        <div class="debt-summary-card">
+          <div class="overview-card-icon green">
+            <i class="fas fa-arrow-up"></i>
+          </div>
+          <div>
+            <div class="overview-card-label">Highest Score</div>
+            <div class="overview-card-value" id="highestScore">--</div>
+          </div>
+        </div>
+        <div class="debt-summary-card">
+          <div class="overview-card-icon orange">
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div>
+            <div class="overview-card-label">Lowest Score</div>
+            <div class="overview-card-value" id="lowestScore">--</div>
+          </div>
+        </div>
+        <div class="debt-summary-card">
+          <div class="overview-card-icon purple">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div>
+            <div class="overview-card-label">Times Calculated</div>
+            <div class="overview-card-value" id="totalCalculations">--</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Card -->
+      <div class="card history-chart-card">
+        <div class="history-chart-header">
+          <div>
+            <h3>Score Over Time</h3>
+            <p>Each point represents a score calculation</p>
+          </div>
+          <button class="btn-outline" id="clearHistoryBtn"
+                  style="padding:0.5rem 1rem; font-size:0.82rem;">
+            <i class="fas fa-trash"></i> Clear History
+          </button>
+        </div>
+        <div class="history-chart-wrap">
+          <canvas id="historyChart"></canvas>
+        </div>
+      </div>
+
+      <!-- History List -->
+      <div class="card history-list-card">
+        <h3>All Calculations</h3>
+        <div class="history-list" id="historyList"></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

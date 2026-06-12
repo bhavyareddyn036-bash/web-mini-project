@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Results & Advice</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html" class="active"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Step 5</div>
+        <h1>Results &amp; <span class="text-green">Advice</span></h1>
+        <p>Your personalised financial personality and action plan</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- Empty State — no quiz taken -->
+    <div class="card empty-state" id="resultsEmpty">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Complete the Quiz First</h3>
+      <p>Take the personality quiz to unlock your personalised financial advice and full results summary.</p>
+      <a href="quiz.html" class="btn-primary">
+        <i class="fas fa-brain"></i> Take the Quiz
+      </a>
+    </div>
+
+    <!-- Results Content -->
+    <div id="resultsContent" style="display:none;">
+
+      <!-- Personality Card -->
+      <div class="card personality-result-card" id="personalityResultCard">
+        <div class="personality-result-emoji" id="resultEmoji"></div>
+        <div class="personality-result-info">
+          <div class="section-tag" id="resultTag"></div>
+          <h2 id="resultName"></h2>
+          <p id="resultDesc"></p>
+        </div>
+        <div class="personality-score-ring" id="scoreRing">
+          <span id="ringScore"></span>
+          <small>Score</small>
+        </div>
+      </div>
+
+      <!-- Strengths & Weaknesses -->
+      <div class="sw-grid">
+        <div class="card sw-card strengths-card">
+          <h3><i class="fas fa-thumbs-up"></i> Your Strengths</h3>
+          <ul id="strengthsList"></ul>
+        </div>
+        <div class="card sw-card weaknesses-card">
+          <h3><i class="fas fa-exclamation-triangle"></i> Areas to Improve</h3>
+          <ul id="weaknessesList"></ul>
+        </div>
+      </div>
+
+      <!-- Action Plan -->
+      <div class="card results-section">
+        <div class="results-section-header">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            <h3>Your Personalised Action Plan</h3>
+            <p>Based on your personality type and financial data</p>
+          </div>
+        </div>
+        <div class="advice-grid" id="adviceGrid"></div>
+      </div>
+
+      <!-- Financial Summary -->
+      <div class="card results-section">
+        <div class="results-section-header">
+          <i class="fas fa-clipboard-check"></i>
+          <div>
+            <h3>Complete Financial Summary</h3>
+            <p>A snapshot of your current financial position</p>
+          </div>
+        </div>
+        <div class="summary-grid" id="summaryGrid"></div>
+      </div>
+
+      <!-- Retake -->
+      <div class="results-actions">
+        <a href="quiz.html" class="btn-outline" id="retakeQuizBtn">
+          <i class="fas fa-redo"></i>
+          Retake Quiz
+        </a>
+        <a href="analyzer.html" class="btn-outline">
+          <i class="fas fa-calculator"></i>
+          Update Finances
+        </a>
+        <a href="dashboard.html" class="btn-primary">
+          <i class="fas fa-home"></i>
+          Back to Dashboard
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

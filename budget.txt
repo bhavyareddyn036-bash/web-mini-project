@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Budget Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html" class="active"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Smart Tool</div>
+        <h1>Budget <span class="text-green">Planner</span></h1>
+        <p>Your recommended monthly budget based on the 50/30/20 rule</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- No Data State -->
+    <div class="card empty-state" id="budgetEmpty">
+      <i class="fas fa-wallet"></i>
+      <h3>No Income Data Yet</h3>
+      <p>Enter your income and financial details in the Analyser first to see your personalised budget breakdown.</p>
+      <a href="analyzer.html" class="btn-primary">
+        <i class="fas fa-calculator"></i> Go to Analyser
+      </a>
+    </div>
+
+    <!-- Budget Content -->
+    <div id="budgetContent" style="display:none;">
+
+      <!-- Rule Explainer -->
+      <div class="card budget-explainer">
+        <div class="budget-explainer-icon">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <div>
+          <h3>The 50 / 30 / 20 Rule</h3>
+          <p>
+            A simple and proven budgeting framework. Split your monthly
+            take-home income into three categories — needs, wants and savings.
+            This helps you live comfortably today while building for tomorrow.
+          </p>
+        </div>
+        <div class="budget-income-chip">
+          <small>Your Income</small>
+          <strong id="budgetIncomeDisplay"></strong>
+        </div>
+      </div>
+
+      <!-- Budget Bars -->
+      <div class="card budget-bars-card">
+
+        <!-- 50% Needs -->
+        <div class="budget-bar-section">
+          <div class="budget-bar-header">
+            <div class="budget-bar-left">
+              <div class="budget-dot-label needs">
+                <span class="budget-dot needs-dot"></span>
+                <div>
+                  <strong>50% — Needs</strong>
+                  <small>Rent, food, bills, transport, insurance</small>
+                </div>
+              </div>
+            </div>
+            <div class="budget-bar-right">
+              <div class="budget-amount" id="budgetNeeds"></div>
+              <div class="budget-amount-sub">per month</div>
+            </div>
+          </div>
+          <div class="budget-track">
+            <div class="budget-fill needs-fill" style="width:50%"></div>
+          </div>
+          <div class="budget-actual" id="needsActual"></div>
+        </div>
+
+        <div class="budget-divider"></div>
+
+        <!-- 30% Wants -->
+        <div class="budget-bar-section">
+          <div class="budget-bar-header">
+            <div class="budget-bar-left">
+              <div class="budget-dot-label wants">
+                <span class="budget-dot wants-dot"></span>
+                <div>
+                  <strong>30% — Wants</strong>
+                  <small>Dining, entertainment, hobbies, subscriptions</small>
+                </div>
+              </div>
+            </div>
+            <div class="budget-bar-right">
+              <div class="budget-amount" id="budgetWants"></div>
+              <div class="budget-amount-sub">per month</div>
+            </div>
+          </div>
+          <div class="budget-track">
+            <div class="budget-fill wants-fill" style="width:30%"></div>
+          </div>
+        </div>
+
+        <div class="budget-divider"></div>
+
+        <!-- 20% Savings -->
+        <div class="budget-bar-section">
+          <div class="budget-bar-header">
+            <div class="budget-bar-left">
+              <div class="budget-dot-label saves">
+                <span class="budget-dot saves-dot"></span>
+                <div>
+                  <strong>20% — Savings</strong>
+                  <small>Emergency fund, investments, goals</small>
+                </div>
+              </div>
+            </div>
+            <div class="budget-bar-right">
+              <div class="budget-amount" id="budgetSavings"></div>
+              <div class="budget-amount-sub">per month</div>
+            </div>
+          </div>
+          <div class="budget-track">
+            <div class="budget-fill saves-fill" style="width:20%"></div>
+          </div>
+          <div class="budget-actual" id="savingsActual"></div>
+        </div>
+
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="budget-comparison-grid" id="budgetComparisonGrid"></div>
+
+      <!-- Budget Tips -->
+      <div class="card budget-tips-card">
+        <h3><i class="fas fa-lightbulb"></i> Budget Tips for You</h3>
+        <div class="budget-tips-list" id="budgetTipsList"></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

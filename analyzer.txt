@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Financial Analyser</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html" class="active"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Step 2</div>
+        <h1>Financial <span class="text-blue">Analyser</span></h1>
+        <p>Enter your monthly figures — your last entries are always saved</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- Input Card -->
+    <div class="card" id="analyserCard">
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label><i class="fas fa-money-bill-wave"></i> Monthly Income</label>
+          <input type="number" id="income" placeholder="e.g. 50000" min="0"/>
+          <small>Your total take-home pay per month</small>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-shopping-cart"></i> Monthly Expenses</label>
+          <input type="number" id="expenses" placeholder="e.g. 30000" min="0"/>
+          <small>Rent, food, bills, transport etc.</small>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-piggy-bank"></i> Monthly Savings</label>
+          <input type="number" id="savings" placeholder="e.g. 10000" min="0"/>
+          <small>Amount you save each month</small>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-shield-alt"></i> Emergency Fund</label>
+          <input type="number" id="emergencyFund" placeholder="e.g. 100000" min="0"/>
+          <small>Total emergency savings available</small>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-primary" id="calculateBtn">
+          <i class="fas fa-calculator"></i>
+          Calculate My Score
+        </button>
+        <button class="btn-outline" id="clearFinBtn">
+          <i class="fas fa-redo"></i>
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Score Result -->
+    <div class="card score-result" id="scoreResult" style="display:none;">
+
+      <div class="score-result-left">
+        <div class="gauge-wrap">
+          <canvas id="scoreGauge" width="160" height="160"></canvas>
+          <div class="gauge-center">
+            <span id="scoreNumber">0</span>
+            <small>/100</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="score-result-right">
+        <div class="health-badge" id="healthBadge"></div>
+        <h3 id="healthTitle"></h3>
+        <p id="healthDesc"></p>
+        <div class="score-bars">
+
+          <div class="score-bar-item">
+            <div class="score-bar-label">
+              <span>Savings Rate</span>
+              <span id="savingsRateVal"></span>
+            </div>
+            <div class="score-bar-track">
+              <div class="score-bar-fill green" id="savingsRateBar"></div>
+            </div>
+          </div>
+
+          <div class="score-bar-item">
+            <div class="score-bar-label">
+              <span>Expense Ratio</span>
+              <span id="expenseRatioVal"></span>
+            </div>
+            <div class="score-bar-track">
+              <div class="score-bar-fill red" id="expenseRatioBar"></div>
+            </div>
+          </div>
+
+          <div class="score-bar-item">
+            <div class="score-bar-label">
+              <span>Emergency Coverage</span>
+              <span id="emergencyCoverageVal"></span>
+            </div>
+            <div class="score-bar-track">
+              <div class="score-bar-fill blue" id="emergencyCoverageBar"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Savings Tip -->
+    <div class="savings-tip" id="savingsTip" style="display:none;">
+      <i class="fas fa-lightbulb"></i>
+      <p id="savingsTipText"></p>
+    </div>
+
+    <!-- Next Step -->
+    <div class="next-step-banner" id="nextStepBanner" style="display:none;">
+      <i class="fas fa-check-circle"></i>
+      <div>
+        <strong>Score calculated!</strong>
+        <p>Now set your financial goals or take the personality quiz to get personalised advice.</p>
+      </div>
+      <div class="next-step-actions">
+        <a href="goals.html" class="btn-primary">
+          <i class="fas fa-bullseye"></i> Set Goals
+        </a>
+        <a href="quiz.html" class="btn-outline">
+          <i class="fas fa-brain"></i> Take Quiz
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

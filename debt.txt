@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Debt Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html" class="active"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Smart Tool</div>
+        <h1>Debt <span class="text-blue">Tracker</span></h1>
+        <p>Track your debts, interest rates and estimated payoff timelines</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- Debt Summary -->
+    <div class="debt-summary-row" id="debtSummaryRow" style="display:none;">
+      <div class="debt-summary-card">
+        <div class="overview-card-icon red">
+          <i class="fas fa-money-bill-wave"></i>
+        </div>
+        <div>
+          <div class="overview-card-label">Total Debt</div>
+          <div class="overview-card-value" id="totalDebtVal">--</div>
+        </div>
+      </div>
+      <div class="debt-summary-card">
+        <div class="overview-card-icon orange">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div>
+          <div class="overview-card-label">Monthly Payments</div>
+          <div class="overview-card-value" id="totalPaymentVal">--</div>
+        </div>
+      </div>
+      <div class="debt-summary-card">
+        <div class="overview-card-icon blue">
+          <i class="fas fa-list"></i>
+        </div>
+        <div>
+          <div class="overview-card-label">Number of Debts</div>
+          <div class="overview-card-value" id="totalDebtsCount">--</div>
+        </div>
+      </div>
+      <div class="debt-summary-card">
+        <div class="overview-card-icon purple">
+          <i class="fas fa-percentage"></i>
+        </div>
+        <div>
+          <div class="overview-card-label">Avg Interest Rate</div>
+          <div class="overview-card-value" id="avgInterestVal">--</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Debt Form -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <h3 class="card-title">
+        <i class="fas fa-plus-circle"></i> Add a Debt
+      </h3>
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label><i class="fas fa-tag"></i> Debt Name</label>
+          <input type="text" id="debtName" placeholder="e.g. Car Loan"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-money-bill-wave"></i> Total Amount Owed</label>
+          <input type="number" id="debtAmount" placeholder="e.g. 200000" min="0"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-percentage"></i> Interest Rate (% per year)</label>
+          <input type="number" id="debtInterest" placeholder="e.g. 12"
+                 min="0" max="100" step="0.1"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-calendar-check"></i> Monthly Payment</label>
+          <input type="number" id="debtPayment" placeholder="e.g. 5000" min="0"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-list"></i> Debt Type</label>
+          <select id="debtType">
+            <option value="personal">💳 Personal Loan</option>
+            <option value="home">🏠 Home Loan</option>
+            <option value="car">🚗 Car Loan</option>
+            <option value="education">🎓 Education Loan</option>
+            <option value="credit">💰 Credit Card</option>
+            <option value="other">📋 Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-calendar"></i> Due Date (optional)</label>
+          <input type="date" id="debtDue"/>
+        </div>
+
+      </div>
+      <div class="form-actions">
+        <button class="btn-primary" id="addDebtBtn">
+          <i class="fas fa-plus"></i>
+          Add Debt
+        </button>
+      </div>
+    </div>
+
+    <!-- Debts List -->
+    <div id="debtsList">
+      <div class="card empty-state" id="debtsEmpty">
+        <i class="fas fa-check-circle"></i>
+        <h3>No Debts Added</h3>
+        <p>Either you have no debts or you haven't added any yet. Add a debt above to track your payoff progress.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

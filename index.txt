@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Financial Inclusion Analyser</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="landing-page">
+
+  <!-- ═══════════════════════════
+       HERO SECTION
+  ═══════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content">
+
+      <div class="sdg-badge">
+        <i class="fas fa-globe"></i>
+        Supporting SDG 1 &amp; SDG 8
+      </div>
+
+      <h1>
+        Financial <span class="text-green">Inclusion</span> &amp;
+        <span class="text-blue">Smart Financial</span>
+        Behaviour Analyser
+      </h1>
+
+      <p class="hero-desc">
+        Take control of your financial future. Understand your spending habits,
+        track your goals, discover your financial personality, and get a
+        personalised stability score — all in one place.
+      </p>
+
+      <div class="benefit-chips">
+        <div class="chip"><i class="fas fa-shield-alt"></i> Stability Score</div>
+        <div class="chip"><i class="fas fa-bullseye"></i> Goal Tracking</div>
+        <div class="chip"><i class="fas fa-brain"></i> Personality Insights</div>
+        <div class="chip"><i class="fas fa-lightbulb"></i> Smart Advice</div>
+      </div>
+
+      <a href="#about" class="btn-primary hero-btn">
+        Learn More <i class="fas fa-chevron-down"></i>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════ -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-tag">About This Tool</div>
+        <h2>What is <span class="text-blue">FinSmart</span>?</h2>
+        <p>A free tool designed to improve your financial awareness and stability</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon b"><i class="fas fa-info-circle"></i></div>
+          <h3>What It Does</h3>
+          <p>FinSmart analyses your income, expenses, savings and emergency fund to calculate a Financial Stability Score and identify your financial personality type.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon g"><i class="fas fa-chart-line"></i></div>
+          <h3>How It Helps</h3>
+          <p>You get a personalised score, goal tracking with progress bars, a 10-question personality quiz and tailored money management advice — all saved in your browser.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon b"><i class="fas fa-lock"></i></div>
+          <h3>Your Privacy</h3>
+          <p>All your data stays on your device. Nothing is sent to any server. Your profile, scores and goals are saved locally in your browser only.</p>
+        </div>
+      </div>
+
+      <div class="sdg-row">
+        <div class="sdg-card">
+          <div class="sdg-num green">SDG 1</div>
+          <div class="sdg-text">
+            <strong>No Poverty</strong>
+            <p>Empowering individuals with financial literacy to break the cycle of poverty</p>
+          </div>
+        </div>
+        <div class="sdg-card">
+          <div class="sdg-num blue">SDG 8</div>
+          <div class="sdg-text">
+            <strong>Decent Work &amp; Economic Growth</strong>
+            <p>Promoting financial inclusion and smart economic behaviour for all</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       LOGIN / PROFILE SECTION
+  ═══════════════════════════ -->
+  <section id="login">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-tag">Get Started</div>
+        <h2>Create Your <span class="text-green">Profile</span></h2>
+        <p>Set up once — we'll remember everything every time you return</p>
+      </div>
+
+      <!-- RETURNING USER — shown if profile exists -->
+      <div class="card returning-user" id="returningUser" style="display:none;">
+        <div class="returning-avatar" id="returningAvatar"></div>
+        <div class="returning-info">
+          <h3 id="returningName"></h3>
+          <p id="returningMeta"></p>
+          <p id="returningGoal"></p>
+        </div>
+        <div class="returning-actions">
+          <a href="dashboard.html" class="btn-primary">
+            <i class="fas fa-arrow-right"></i>
+            Continue to Dashboard
+          </a>
+          <button class="btn-outline" id="switchUserBtn">
+            <i class="fas fa-user-plus"></i>
+            New Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- NEW USER FORM — shown on first visit -->
+      <div class="card" id="profileForm">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="userName" placeholder="e.g. Sarah Johnson"/>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-birthday-cake"></i> Age</label>
+            <input type="number" id="userAge" placeholder="e.g. 28" min="10" max="100"/>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-briefcase"></i> Occupation</label>
+            <input type="text" id="userOccupation" placeholder="e.g. Software Engineer"/>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt"></i> City</label>
+            <input type="text" id="userCity" placeholder="e.g. Mumbai"/>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-coins"></i> Currency</label>
+            <select id="userCurrency">
+              <option value="₹">₹ Indian Rupee (INR)</option>
+              <option value="$">$ US Dollar (USD)</option>
+              <option value="£">£ British Pound (GBP)</option>
+              <option value="€">€ Euro (EUR)</option>
+              <option value="R">R South African Rand</option>
+              <option value="₦">₦ Nigerian Naira</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-bullseye"></i> Primary Financial Goal</label>
+            <select id="userGoalType">
+              <option value="">Select a goal...</option>
+              <option value="emergency">Build Emergency Fund</option>
+              <option value="savings">Increase Savings</option>
+              <option value="debt">Pay Off Debt</option>
+              <option value="investment">Start Investing</option>
+              <option value="retirement">Plan for Retirement</option>
+              <option value="home">Buy a Home</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-primary" id="saveProfileBtn">
+            <i class="fas fa-arrow-right"></i>
+            Enter FinSmart
+          </button>
+        </div>
+
+        <p class="form-note">
+          <i class="fas fa-lock"></i>
+          Your data is saved only in your browser — completely private
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════
+       FOOTER
+  ═══════════════════════════ -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

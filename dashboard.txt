@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1 id="welcomeTitle">Welcome back! 👋</h1>
+        <p id="welcomeSub">Here is your financial overview for today</p>
+      </div>
+      <div class="welcome-date" id="welcomeDate"></div>
+    </div>
+
+    <!-- Overview Cards -->
+    <div class="overview-grid">
+
+      <div class="overview-card" id="scoreCard">
+        <div class="overview-card-icon blue">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <div class="overview-card-info">
+          <div class="overview-card-label">Stability Score</div>
+          <div class="overview-card-value" id="dashScore">--</div>
+          <div class="overview-card-sub" id="dashScoreLevel">Not calculated yet</div>
+        </div>
+        <a href="analyzer.html" class="overview-card-link">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="overview-card" id="goalsCard">
+        <div class="overview-card-icon green">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="overview-card-info">
+          <div class="overview-card-label">Goals</div>
+          <div class="overview-card-value" id="dashGoals">--</div>
+          <div class="overview-card-sub" id="dashGoalsSub">No goals added yet</div>
+        </div>
+        <a href="goals.html" class="overview-card-link">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="overview-card" id="personalityCard">
+        <div class="overview-card-icon purple">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="overview-card-info">
+          <div class="overview-card-label">Personality Type</div>
+          <div class="overview-card-value" id="dashPersonality">--</div>
+          <div class="overview-card-sub" id="dashPersonalitySub">Take the quiz to find out</div>
+        </div>
+        <a href="quiz.html" class="overview-card-link">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="overview-card" id="savingsCard">
+        <div class="overview-card-icon teal">
+          <i class="fas fa-piggy-bank"></i>
+        </div>
+        <div class="overview-card-info">
+          <div class="overview-card-label">Monthly Savings</div>
+          <div class="overview-card-value" id="dashSavings">--</div>
+          <div class="overview-card-sub" id="dashSavingsSub">Enter your financial data</div>
+        </div>
+        <a href="analyzer.html" class="overview-card-link">
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Quick Nav Section -->
+    <div class="dash-section-title">
+      <h2>Quick Navigation</h2>
+      <p>Jump to any section of your financial toolkit</p>
+    </div>
+
+    <div class="quick-nav-grid">
+
+      <a href="analyzer.html" class="quick-nav-card">
+        <div class="quick-nav-icon blue">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Financial Analyser</h3>
+          <p>Enter income, expenses and savings to calculate your stability score</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="goals.html" class="quick-nav-card">
+        <div class="quick-nav-icon green">
+          <i class="fas fa-flag-checkered"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Goal Tracker</h3>
+          <p>Set financial goals and track your progress with visual progress bars</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="quiz.html" class="quick-nav-card">
+        <div class="quick-nav-icon purple">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Personality Quiz</h3>
+          <p>Answer 10 questions to discover your financial personality type</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="results.html" class="quick-nav-card">
+        <div class="quick-nav-icon orange">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Results &amp; Advice</h3>
+          <p>View your personality results and personalised financial action plan</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="budget.html" class="quick-nav-card">
+        <div class="quick-nav-icon teal">
+          <i class="fas fa-wallet"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Budget Planner</h3>
+          <p>See your recommended 50/30/20 budget split based on your income</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="debt.html" class="quick-nav-card">
+        <div class="quick-nav-icon red">
+          <i class="fas fa-credit-card"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Debt Tracker</h3>
+          <p>Track your debts, interest rates and estimated payoff timelines</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+      <a href="history.html" class="quick-nav-card">
+        <div class="quick-nav-icon blue">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <div class="quick-nav-info">
+          <h3>Score History</h3>
+          <p>View how your financial health score has improved over time</p>
+        </div>
+        <i class="fas fa-chevron-right quick-nav-arrow"></i>
+      </a>
+
+    </div>
+
+    <!-- No Data Banner -->
+    <div class="no-data-banner" id="noDataBanner" style="display:none;">
+      <i class="fas fa-info-circle"></i>
+      <div>
+        <strong>Get started!</strong>
+        <p>Head to the Financial Analyser to enter your data and calculate your first stability score.</p>
+      </div>
+      <a href="analyzer.html" class="btn-primary">
+        <i class="fas fa-arrow-right"></i>
+        Go to Analyser
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════
+       FOOTER
+  ═══════════════════════════ -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

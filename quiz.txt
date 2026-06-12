@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinSmart – Personality Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="inner-page">
+
+  <!-- ═══════════════════════════
+       NAVBAR
+  ═══════════════════════════ -->
+  <nav class="navbar">
+    <a href="dashboard.html" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-chart-line"></i></div>
+      <span>Fin<span class="text-green">Smart</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a href="analyzer.html"><i class="fas fa-calculator"></i> Analyser</a></li>
+      <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+      <li><a href="quiz.html" class="active"><i class="fas fa-brain"></i> Quiz</a></li>
+      <li><a href="results.html"><i class="fas fa-lightbulb"></i> Results</a></li>
+      <li><a href="budget.html"><i class="fas fa-wallet"></i> Budget</a></li>
+      <li><a href="debt.html"><i class="fas fa-credit-card"></i> Debt</a></li>
+      <li><a href="history.html"><i class="fas fa-chart-bar"></i> History</a></li>
+    </ul>
+    <div class="nav-user" id="navUser">
+      <div class="nav-avatar" id="navAvatar"></div>
+      <span id="navName"></span>
+      <a href="index.html" class="nav-edit" title="Edit Profile">
+        <i class="fas fa-edit"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <div class="section-tag">Step 4</div>
+        <h1>Personality <span class="text-blue">Quiz</span></h1>
+        <p>Answer 10 questions to discover your financial personality type</p>
+      </div>
+      <a href="dashboard.html" class="btn-outline">
+        <i class="fas fa-arrow-left"></i> Dashboard
+      </a>
+    </div>
+
+    <!-- ═══ QUIZ START SCREEN ═══ -->
+    <div class="card quiz-start-card" id="quizStart">
+      <div class="quiz-start-inner">
+
+        <div class="quiz-start-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+
+        <h2>Ready to discover your financial personality?</h2>
+        <p>
+          This quick 10-question quiz analyses your financial behaviour and
+          reveals your personality type — giving you a personalised action
+          plan to improve your money habits.
+        </p>
+
+        <div class="personality-pills">
+          <div class="personality-pill protector">
+            <span class="pill-emoji">🛡️</span>
+            <div>
+              <strong>The Protector</strong>
+              <small>Conservative & Security-Focused</small>
+            </div>
+          </div>
+          <div class="personality-pill planner">
+            <span class="pill-emoji">🎯</span>
+            <div>
+              <strong>The Planner</strong>
+              <small>Organised & Goal-Driven</small>
+            </div>
+          </div>
+          <div class="personality-pill optimizer">
+            <span class="pill-emoji">🚀</span>
+            <div>
+              <strong>The Optimizer</strong>
+              <small>Strategic & Growth-Focused</small>
+            </div>
+          </div>
+          <div class="personality-pill spender">
+            <span class="pill-emoji">🎉</span>
+            <div>
+              <strong>The Spender</strong>
+              <small>Lifestyle & Present-Oriented</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-start-meta">
+          <div class="quiz-meta-item">
+            <i class="fas fa-question-circle"></i>
+            <span>10 Questions</span>
+          </div>
+          <div class="quiz-meta-item">
+            <i class="fas fa-clock"></i>
+            <span>2 Minutes</span>
+          </div>
+          <div class="quiz-meta-item">
+            <i class="fas fa-redo"></i>
+            <span>Retake Anytime</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="startQuizBtn">
+          <i class="fas fa-play"></i>
+          Start Quiz
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ═══ QUIZ BODY ═══ -->
+    <div id="quizBody" style="display:none;">
+
+      <!-- Progress -->
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-info">
+          <span id="quizProgressText">Question 1 of 10</span>
+          <span id="quizProgressPct">10%</span>
+        </div>
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="card question-card">
+        <div class="question-header">
+          <div class="question-num" id="questionNum">Q1</div>
+          <div class="question-category" id="questionCategory"></div>
+        </div>
+        <h2 class="question-text" id="questionText"></h2>
+        <div class="options-list" id="optionsList"></div>
+
+        <!-- Navigation -->
+        <div class="quiz-nav">
+          <button class="btn-outline" id="prevBtn" style="display:none;">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-primary" id="nextBtn" disabled>
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ QUIZ COMPLETE ═══ -->
+    <div class="card quiz-complete-card" id="quizComplete" style="display:none;">
+      <div class="quiz-complete-inner">
+        <div class="quiz-complete-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Quiz Complete! 🎉</h2>
+        <p>
+          Great job! Your financial personality has been determined.
+          Head to the Results page to see your full personality profile
+          and personalised action plan.
+        </p>
+        <div class="quiz-complete-type" id="quizCompleteType"></div>
+        <div class="quiz-complete-actions">
+          <a href="results.html" class="btn-primary">
+            <i class="fas fa-lightbulb"></i>
+            See My Results
+          </a>
+          <button class="btn-outline" id="retakeFromCompleteBtn">
+            <i class="fas fa-redo"></i>
+            Retake Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>🌱 Supporting <strong>SDG 1: No Poverty</strong> &amp; <strong>SDG 8: Decent Work &amp; Economic Growth</strong></p>
+    <p>Built with ❤️ for Financial Inclusion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
